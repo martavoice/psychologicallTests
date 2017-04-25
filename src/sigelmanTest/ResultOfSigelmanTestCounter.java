@@ -10,8 +10,8 @@ import java.util.Map;
  * Created by user on 28.02.2017.
  */
 public class ResultOfSigelmanTestCounter {
-    private ArrayList<String> listOfDataForFirstBlock = new ArrayList<>();
-    private ArrayList<String> listOfDataForSecondBlock = new ArrayList<>();
+    public ArrayList<String> listOfDataForFirstBlock = new ArrayList<>();
+    public ArrayList<String> listOfDataForSecondBlock = new ArrayList<>();
     private String fileName;
     private ResultForEachScaleCounter resultForEachScaleCounter;
 
