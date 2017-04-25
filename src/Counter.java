@@ -11,14 +11,20 @@ public class Counter {
     public static void main(String[] args) {
         FileExcecutor fileExcecutor = new FileExcecutor();
         String filename = "C:/Users/Марта/Downloads/Sofia/sigel.txt";
+
         ArrayList<String> data = fileExcecutor.convertFileDataToList(filename);
+        ArrayList<ArrayList> allResponsesInList = sigel.createListOfResultsForOnePerson(data);
 
-        sigel.fillListsOFData(data, sigel.listOfDataForFirstBlock, sigel.listOfDataForSecondBlock);
-        ArrayList<String> firstBlockResults = sigel.createListOfResultsForAllRespondentsFromOneBlock(sigel.listOfDataForFirstBlock);
-        ArrayList<String> secondBlockResults = sigel.createListOfResultsForAllRespondentsFromOneBlock(sigel.listOfDataForSecondBlock);
-        ArrayList<String> dataResult = sigel.appendResultsForBothBlocks(firstBlockResults, secondBlockResults);
+        for (ArrayList dataFromOnePerson : allResponsesInList) {
+            sigel.fillListsOFData(dataFromOnePerson, sigel.listOfDataForFirstBlock, sigel.listOfDataForSecondBlock);
+            ArrayList<String> firstBlockResults = sigel.createListOfResultsForAllRespondentsFromOneBlock(sigel.listOfDataForFirstBlock);
+            ArrayList<String> secondBlockResults = sigel.createListOfResultsForAllRespondentsFromOneBlock(sigel.listOfDataForSecondBlock);
+            String resultForOnePerson = sigel.appendResultsForBothBlocksInOneLineForOnePerson(firstBlockResults, secondBlockResults);
+            sigel.allResults.add(resultForOnePerson);
+        }
 
-        fileExcecutor.loadResultsForAllRespondentsInFile(dataResult);
+
+        fileExcecutor.loadResultsForAllRespondentsInFile(sigel.allResults);
 
 
     }

@@ -28,12 +28,14 @@ public class ResultForEachScaleCounter {
     }
 
     public String[] createArrayOfAnswersFromStringData(String dataAboutOnePerson) {
+
         String[] arrayOfTestDataForOnePerson = dataAboutOnePerson.split(" ");
         return arrayOfTestDataForOnePerson;
     }
 
     public int countResultForOneScaleForOnePerson(int[] numbersOfQuestion, String[] answersFromPerson) {
         int sum = 0;
+
         for (int i = 0; i < numbersOfQuestion.length; i++) {
             switch (Integer.valueOf(answersFromPerson[numbersOfQuestion[i]])) {
                 case 4:
