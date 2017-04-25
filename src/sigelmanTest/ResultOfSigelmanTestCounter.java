@@ -12,14 +12,28 @@ import java.util.Map;
 public class ResultOfSigelmanTestCounter {
     public ArrayList<String> listOfDataForFirstBlock = new ArrayList<>();
     public ArrayList<String> listOfDataForSecondBlock = new ArrayList<>();
+
     private String fileName;
     private ResultForEachScaleCounter resultForEachScaleCounter;
 
-
+    //data from one person from string transform to list and adds to list of all lists respondents
+    public ArrayList<ArrayList> createListOfResultsForOnePerson(ArrayList<String> dataOfAllRespondents){
+        ArrayList<ArrayList> allData = new ArrayList<>();
+        for (String dataFromOnePerson : dataOfAllRespondents){
+            String[] arrayOdDataForOnePerson = dataFromOnePerson.split(" ");
+            ArrayList<String> dataOfOnePerson = new ArrayList<>();
+            for (int i = 0; i <arrayOdDataForOnePerson.length ; i++) {
+                 dataOfOnePerson.add(arrayOdDataForOnePerson[i]);
+            }
+            allData.add(dataOfOnePerson);
+        }
+        return allData;
+    }
 
     public void fillListsOFData( ArrayList<String> allDataToDivide, ArrayList<String> listOfDataForFirstBlock, ArrayList<String> listOfDataForSecondBlock) {
 
-
+        listOfDataForFirstBlock.clear();
+        listOfDataForSecondBlock.clear();
         //put number of person to both lists for simplier count of questions(from 1 not 0)
         listOfDataForFirstBlock.add(allDataToDivide.get(0));
         listOfDataForSecondBlock.add(allDataToDivide.get(0));
@@ -42,7 +56,7 @@ public class ResultOfSigelmanTestCounter {
         String allResultFromOnePerson = stringBuilder.toString();
         return allResultFromOnePerson;
     }
-    //creating list of String which contains results counting for one block for all respondents
+    //creating list of String which contains results counting for one block for 1 person
     public ArrayList<String> createListOfResultsForAllRespondentsFromOneBlock(ArrayList<String> listOfDataForBlock){
         ArrayList<String> listOfResultData = new ArrayList<>();
         for (String dataAboutOnePerson : listOfDataForBlock){

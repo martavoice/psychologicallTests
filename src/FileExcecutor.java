@@ -13,6 +13,7 @@ public class FileExcecutor {
             while (reader.ready()) {
                 String dataFromOnePerson = reader.readLine();
                 listOfDataFromFile.add(dataFromOnePerson);
+
             }
             reader.close();
         } catch (IOException e) {
