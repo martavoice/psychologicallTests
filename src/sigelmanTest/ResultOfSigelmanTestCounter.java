@@ -72,7 +72,9 @@ public class ResultOfSigelmanTestCounter {
             }catch (NullPointerException e){
 
             }
-            String resultForOnePerson = convertResultForOnePersonToString(resultForEachScaleCounter.countResultToScaleForOnePerson(dataAboutOnePerson));
+            Map<ScaleOfSingelmanTest, Integer> a = resultForEachScaleCounter.countResultToScaleForOnePerson(dataAboutOnePerson);
+
+            String resultForOnePerson = convertResultForOnePersonToString(a);
             listOfResultData.add(resultForOnePerson);
         }
         return listOfResultData;
