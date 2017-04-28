@@ -15,7 +15,7 @@ public class ResultOfSigelmanTestCounter {
     public ArrayList<String> allResults = new ArrayList<>();
 
     private String fileName;
-    private ResultForEachScaleCounter resultForEachScaleCounter;
+    public ResultForEachScaleCounter resultForEachScaleCounter;
 
     //data from one person from string transform to list and adds to list of all lists respondents
     public ArrayList<ArrayList> createListOfResultsForOnePerson(ArrayList<String> dataOfAllRespondents) {

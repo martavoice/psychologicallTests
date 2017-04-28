@@ -46,6 +46,8 @@ public class ResultForEachScaleCounter {
                     sum += 2;
                 case 1:
                     sum += 1;
+                case 0:
+                    sum += 0;
             }
         }
         return sum;
@@ -56,10 +58,10 @@ public class ResultForEachScaleCounter {
         Map<ScaleOfSingelmanTest, Integer> valuesOfTestScalesForOnePerson = new HashMap<>();
 
         for (Map.Entry<ScaleOfSingelmanTest, int[]> pair : keysToTest.entrySet()) {
-               int[] numbersOfQuestion = pair.getValue();
-               int sumForScale = countResultForOneScaleForOnePerson(numbersOfQuestion,answersFromOnPerson);
+            int[] numbersOfQuestion = pair.getValue();
+            int sumForScale = countResultForOneScaleForOnePerson(numbersOfQuestion, answersFromOnPerson);
 
-               valuesOfTestScalesForOnePerson.put(pair.getKey(),sumForScale);
+            valuesOfTestScalesForOnePerson.put(pair.getKey(), sumForScale);
         }
         return valuesOfTestScalesForOnePerson;
     }
