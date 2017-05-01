@@ -15,7 +15,7 @@ public class ResultOfSigelmanTestCounter {
     public ArrayList<String> allResults = new ArrayList<>();
 
     private String fileName;
-    public ResultForEachScaleCounter resultForEachScaleCounter;
+    public ResultForEachScaleCounter resultForEachScaleCounter = new ResultForEachScaleCounter();
 
     //data from one person from string transform to list and adds to list of all lists respondents
     public ArrayList<ArrayList> createListOfResultsForOnePerson(ArrayList<String> dataOfAllRespondents) {
@@ -25,11 +25,12 @@ public class ResultOfSigelmanTestCounter {
             char[] buffer = dataFromOnePerson.toCharArray();
 
             for (int i = 0; i < buffer.length; i++) {
-                if (buffer[i] != ' ') {
+                if (buffer[i] != '\t') {
                     Character data = buffer[i];
                     dataOfOnePerson.add((data.toString()));
                 }
             }
+            System.out.println("1" + dataOfOnePerson);
             allData.add(dataOfOnePerson);
         }
         return allData;
@@ -47,8 +48,14 @@ public class ResultOfSigelmanTestCounter {
         for (int i = 1; i < 51; i++) {
             listOfDataForFirstBlock.add(allDataToDivide.get(i));
         }
+        for (String s : listOfDataForFirstBlock){
+            System.out.println("2" + s);
+        }
         for (int i = 51; i < allDataToDivide.size(); i++) {
             listOfDataForSecondBlock.add(allDataToDivide.get(i));
+        }
+        for (String s : listOfDataForFirstBlock){
+            System.out.println("3" + s);
         }
     }
 
@@ -67,11 +74,7 @@ public class ResultOfSigelmanTestCounter {
     public ArrayList<String> createListOfResultsForAllRespondentsFromOneBlock(ArrayList<String> listOfDataForBlock) {
         ArrayList<String> listOfResultData = new ArrayList<>();
         for (String dataAboutOnePerson : listOfDataForBlock) {
-            try {
-                resultForEachScaleCounter.createArrayOfAnswersFromStringData(dataAboutOnePerson);
-            }catch (NullPointerException e){
-
-            }
+            resultForEachScaleCounter.createArrayOfAnswersFromStringData(dataAboutOnePerson);
             Map<ScaleOfSingelmanTest, Integer> a = resultForEachScaleCounter.countResultToScaleForOnePerson(dataAboutOnePerson);
 
             String resultForOnePerson = convertResultForOnePersonToString(a);

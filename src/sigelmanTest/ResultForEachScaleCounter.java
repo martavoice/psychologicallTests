@@ -8,10 +8,10 @@ import java.util.Map;
  * Created by user on 28.02.2017.
  */
 public class ResultForEachScaleCounter {
-    private Map<ScaleOfSingelmanTest, int[]> keysToTest = new HashMap<>();
+    private static Map<ScaleOfSingelmanTest, int[]> keysToTest = new HashMap<>();
 
 
-    public void createMapOfKeysToTest() {
+    static {
 
         int[] numbersOfQuestionForScaleLove = {1, 6, 11, 16, 21, 26, 31, 36, 41, 46};
         int[] numbersOfQuestionForScaleRequirements = {2, 7, 12, 17, 22, 27, 32, 37, 42, 47};
@@ -27,17 +27,29 @@ public class ResultForEachScaleCounter {
 
     }
 
-    public String[] createArrayOfAnswersFromStringData(String dataAboutOnePerson) {
+    public ArrayList<String> createArrayOfAnswersFromStringData(String dataAboutOnePerson) {
+        System.out.println(dataAboutOnePerson);
+        ArrayList<String> dataOfOnePerson = new ArrayList<>();
+        char[] buffer = dataAboutOnePerson.toCharArray();
 
-        String[] arrayOfTestDataForOnePerson = dataAboutOnePerson.split(" ");
-        return arrayOfTestDataForOnePerson;
+        for (int i = 0; i < buffer.length; i++) {
+            if (buffer[i] != '\t') {
+                Character data = buffer[i];
+                dataOfOnePerson.add((data.toString()));
+            }
+        }
+        for (String s : dataOfOnePerson){
+            System.out.println("4" + s);
+        }
+
+        return dataOfOnePerson;
     }
 
-    public int countResultForOneScaleForOnePerson(int[] numbersOfQuestion, String[] answersFromPerson) {
+    public int countResultForOneScaleForOnePerson(int[] numbersOfQuestion, ArrayList<String> answersFromPerson) {
         int sum = 0;
 
         for (int i = 0; i < numbersOfQuestion.length; i++) {
-            switch (Integer.valueOf(answersFromPerson[numbersOfQuestion[i]])) {
+            switch (Integer.valueOf(answersFromPerson.get(i))) {
                 case 4:
                     sum += 4;
                 case 3:
@@ -54,7 +66,7 @@ public class ResultForEachScaleCounter {
     }
 
     public Map<ScaleOfSingelmanTest, Integer> countResultToScaleForOnePerson(String dataAboutPerson) {
-        String[] answersFromOnPerson = createArrayOfAnswersFromStringData(dataAboutPerson);
+        ArrayList<String> answersFromOnPerson = createArrayOfAnswersFromStringData(dataAboutPerson);
         Map<ScaleOfSingelmanTest, Integer> valuesOfTestScalesForOnePerson = new HashMap<>();
 
         for (Map.Entry<ScaleOfSingelmanTest, int[]> pair : keysToTest.entrySet()) {

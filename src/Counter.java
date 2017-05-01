@@ -10,14 +10,20 @@ public class Counter {
 
     public static void main(String[] args) {
         FileExcecutor fileExcecutor = new FileExcecutor();
-        String filename = "C:/Users/Марта/Downloads/Sofia/sigel.txt";
+        String filename = "C:/Users/Марта/Downloads/new.txt";
 
         ArrayList<String> data = fileExcecutor.convertFileDataToList(filename);
         ArrayList<ArrayList> allResponsesInList = sigel.createListOfResultsForOnePerson(data);
 
         for (ArrayList dataFromOnePerson : allResponsesInList) {
+
             sigel.fillListsOFData(dataFromOnePerson, sigel.listOfDataForFirstBlock, sigel.listOfDataForSecondBlock);
-            sigel.resultForEachScaleCounter.createMapOfKeysToTest();
+            for (String s : sigel.listOfDataForFirstBlock){
+                System.out.println("6" + s);
+            }
+            for (String s : sigel.listOfDataForSecondBlock){
+                System.out.println("7" + s);
+            }
             ArrayList<String> firstBlockResults = sigel.createListOfResultsForAllRespondentsFromOneBlock(sigel.listOfDataForFirstBlock);
             ArrayList<String> secondBlockResults = sigel.createListOfResultsForAllRespondentsFromOneBlock(sigel.listOfDataForSecondBlock);
             String resultForOnePerson = sigel.appendResultsForBothBlocksInOneLineForOnePerson(firstBlockResults, secondBlockResults);
