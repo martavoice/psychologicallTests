@@ -25,19 +25,6 @@ public class ResultForEachScaleCounter {
 
     }
 
-    public ArrayList<String> createArrayOfAnswersFromStringData(String dataAboutOnePerson) {
-        ArrayList<String> dataOfOnePerson = new ArrayList<>();
-        char[] buffer = dataAboutOnePerson.toCharArray();
-
-        for (int i = 0; i < buffer.length; i++) {
-            if (buffer[i] != '\t') {
-                Character data = buffer[i];
-                dataOfOnePerson.add((data.toString()));
-            }
-        }
-
-        return dataOfOnePerson;
-    }
 
     public int countResultForOneScaleForOnePerson(int[] numbersOfQuestion, ArrayList<String> answersFromPerson) {
         int sum = 0;

@@ -14,7 +14,6 @@ public class ResultOfSigelmanTestCounter {
     public ArrayList<String> listOfDataForSecondBlock = new ArrayList<>();
     public ArrayList<String> allResults = new ArrayList<>();
 
-    private String fileName;
     public ResultForEachScaleCounter resultForEachScaleCounter = new ResultForEachScaleCounter();
 
 
