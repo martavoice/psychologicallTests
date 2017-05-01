@@ -1,8 +1,8 @@
+import kostiukTest.ResultOfKostuikTestCounter;
 import kulilovaTest.ResultOfKulikovaTestCounter;
 import natovaBochaver.ResultOfNatovaBocharovaTestCounter;
 import sigelmanTest.ResultOfSigelmanTestCounter;
 
-import javax.print.DocFlavor;
 import java.util.ArrayList;
 
 /**
@@ -12,6 +12,7 @@ public class Counter {
     private static ResultOfSigelmanTestCounter sigel = new ResultOfSigelmanTestCounter();
     private static ResultOfNatovaBocharovaTestCounter natova = new ResultOfNatovaBocharovaTestCounter();
     private static ResultOfKulikovaTestCounter kulikov = new ResultOfKulikovaTestCounter();
+    private static ResultOfKostuikTestCounter kostuik = new ResultOfKostuikTestCounter();
 
     public static void main(String[] args) {
         FileExcecutor fileExcecutor = new FileExcecutor();
@@ -31,14 +32,14 @@ public class Counter {
             sigel.allResults.add(resultForOnePerson);
         }
 
-        fileExcecutor.loadResultsForAllRespondentsInFile(sigel.allResults,"C:/Users/Марта/Downloads/Sofia/resultSigelman.txt");
+        fileExcecutor.loadResultsForAllRespondentsInFile(sigel.allResults, "C:/Users/Марта/Downloads/Sofia/resultSigelman.txt");
 
         //counting results for Natova-Bochaver Test
 
         String filenameN = "C:/Users/Марта/Downloads/Testy/newN.txt";
         ArrayList<String> dataN = fileExcecutor.convertFileDataToList(filenameN);
         ArrayList<String> resultData = natova.createResultListToWriting(dataN);
-        fileExcecutor.loadResultsForAllRespondentsInFile(resultData,"C:/Users/Марта/Downloads/Sofia/resultNatova.txt");
+        fileExcecutor.loadResultsForAllRespondentsInFile(resultData, "C:/Users/Марта/Downloads/Sofia/resultNatova.txt");
 
         //counting results for kulikov test
         String filenameKy = "C:/Users/Марта/Downloads/Testy/newKy.txt";
@@ -49,9 +50,15 @@ public class Counter {
             kulikov.fillListsOFData(dataFromOnePerson, kulikov.listOfDataForFirstBlock, kulikov.listOfDataForSecondBlock);
             ArrayList<String> firstBlockResults = kulikov.createListOfResultsForAllRespondentsFromOneBlock(kulikov.listOfDataForFirstBlock);
             ArrayList<String> secondBlockResults = kulikov.createListOfResultsForAllRespondentsFromOneBlock(kulikov.listOfDataForSecondBlock);
-            String resultForOnePerson = kulikov.appendResultsForBothBlocks(firstBlockResults,secondBlockResults);
+            String resultForOnePerson = kulikov.appendResultsForBothBlocks(firstBlockResults, secondBlockResults);
             kulikov.allResults.add(resultForOnePerson);
         }
-        fileExcecutor.loadResultsForAllRespondentsInFile(kulikov.allResults,"C:/Users/Марта/Downloads/Sofia/resultKulikov.txt");
+        fileExcecutor.loadResultsForAllRespondentsInFile(kulikov.allResults, "C:/Users/Марта/Downloads/Sofia/resultKulikov.txt");
+
+        //counting karkovska test
+        String filenameKa = "C:/Users/Марта/Downloads/Testy/newKa.txt";
+        ArrayList<String> dataKa = fileExcecutor.convertFileDataToList(filenameKa);
+        ArrayList<String> resultDataKa = kostuik.createResultListToWriting(dataKa);
+        fileExcecutor.loadResultsForAllRespondentsInFile(resultDataKa, "C:/Users/Марта/Downloads/Sofia/resultKostuik.txt");
     }
 }

@@ -7,12 +7,13 @@ import java.util.Map;
  * Created by user on 01.03.2017.
  */
 public class ResultOfKostuikTestCounter {
-    private ResultForEachScale resultForEachScale;
+    private ResultForEachScale resultForEachScale = new ResultForEachScale();
     public String convertResultForOnePersonToString(Map<ScalesOfKostuikTest, Integer> resultValuesForOnePerson) {
         StringBuilder stringBuilder = new StringBuilder("");
         for (Map.Entry<ScalesOfKostuikTest, Integer> pair : resultValuesForOnePerson.entrySet()) {
             String resultOfCount = pair.getValue().toString();
             stringBuilder.append(resultOfCount);
+            stringBuilder.append(" ");
         }
         String allResultFromOnePerson = stringBuilder.toString();
         return allResultFromOnePerson;
