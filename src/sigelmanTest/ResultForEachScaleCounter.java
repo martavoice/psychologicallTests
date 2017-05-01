@@ -45,6 +45,7 @@ public class ResultForEachScaleCounter {
 
 
         for (int i = 0; i < numbersOfQuestion.length; i++) {
+            System.out.println(numbersOfQuestion[i]);
             switch (Integer.valueOf(answersFromPerson.get(numbersOfQuestion[i]))) {
                 case 4:
                     sum += 4;

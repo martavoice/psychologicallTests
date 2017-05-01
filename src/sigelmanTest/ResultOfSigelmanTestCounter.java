@@ -45,7 +45,7 @@ public class ResultOfSigelmanTestCounter {
         listOfDataForSecondBlock.add(allDataToDivide.get(0));
 
         //put answers for questions 1-50 of first block to first list and 50 answers to second block
-        for (int i = 2; i < 52; i++) {
+        for (int i = 1; i < 52; i++) {
             listOfDataForFirstBlock.add(allDataToDivide.get(i));
         }
 

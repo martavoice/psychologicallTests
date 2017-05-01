@@ -1,5 +1,6 @@
 import sigelmanTest.ResultOfSigelmanTestCounter;
 
+import javax.print.DocFlavor;
 import java.util.ArrayList;
 
 /**
@@ -10,6 +11,8 @@ public class Counter {
 
     public static void main(String[] args) {
         FileExcecutor fileExcecutor = new FileExcecutor();
+
+        //conting results for Sigelman test
         String filename = "C:/Users/Марта/Downloads/new.txt";
 
         ArrayList<String> data = fileExcecutor.convertFileDataToList(filename);
@@ -23,9 +26,11 @@ public class Counter {
             String resultForOnePerson = sigel.appendResultsForBothBlocksInOneLineForOnePerson(firstBlockResults, secondBlockResults);
             sigel.allResults.add(resultForOnePerson);
         }
-
-
-        fileExcecutor.loadResultsForAllRespondentsInFile(sigel.allResults);
+        System.out.println(sigel.allResults.size());
+        for (String a : sigel.allResults){
+            System.out.println(a);
+        }
+        fileExcecutor.loadResultsForAllRespondentsInFile(sigel.allResults,"C:/Users/Марта/Downloads/Sofia/resultSigelman.txt");
 
 
     }

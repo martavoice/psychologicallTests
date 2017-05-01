@@ -21,8 +21,8 @@ public class FileExcecutor {
         }
         return listOfDataFromFile;
     }
-    public File loadResultsForAllRespondentsInFile(ArrayList<String> resultList) {
-        File resultFile = new File("C:/Users/Марта/Downloads/Sofia/result.txt");
+    public File loadResultsForAllRespondentsInFile(ArrayList<String> resultList, String fileName) {
+        File resultFile = new File(fileName);
 
 
         try {
@@ -30,6 +30,7 @@ public class FileExcecutor {
 
           for (String resultDataForOnePerson : resultList) {
                 writer.write(resultDataForOnePerson);
+                writer.newLine();
             }
             writer.close();
         } catch (IOException e) {
