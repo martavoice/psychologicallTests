@@ -1,3 +1,4 @@
+import natovaBochaver.ResultOfNatovaBocharovaTestCounter;
 import sigelmanTest.ResultOfSigelmanTestCounter;
 
 import javax.print.DocFlavor;
@@ -8,15 +9,16 @@ import java.util.ArrayList;
  */
 public class Counter {
     private static ResultOfSigelmanTestCounter sigel = new ResultOfSigelmanTestCounter();
+    private static ResultOfNatovaBocharovaTestCounter natova = new ResultOfNatovaBocharovaTestCounter();
 
     public static void main(String[] args) {
         FileExcecutor fileExcecutor = new FileExcecutor();
 
-        //conting results for Sigelman test
+        //counting results for Sigelman test
         String filename = "C:/Users/Марта/Downloads/new.txt";
 
         ArrayList<String> data = fileExcecutor.convertFileDataToList(filename);
-        ArrayList<ArrayList> allResponsesInList = sigel.createListOfResultsForOnePerson(data);
+        ArrayList<ArrayList> allResponsesInList = fileExcecutor.createListOfResultsForOnePerson(data);
 
         for (ArrayList dataFromOnePerson : allResponsesInList) {
 
@@ -26,12 +28,17 @@ public class Counter {
             String resultForOnePerson = sigel.appendResultsForBothBlocksInOneLineForOnePerson(firstBlockResults, secondBlockResults);
             sigel.allResults.add(resultForOnePerson);
         }
-        System.out.println(sigel.allResults.size());
-        for (String a : sigel.allResults){
-            System.out.println(a);
-        }
+
         fileExcecutor.loadResultsForAllRespondentsInFile(sigel.allResults,"C:/Users/Марта/Downloads/Sofia/resultSigelman.txt");
 
+        //counting results for Natova-Bochaver Test
+
+        String filenameN = "C:/Users/Марта/Downloads/newN.txt";
+        ArrayList<String> dataN = fileExcecutor.convertFileDataToList(filenameN);
+        ArrayList<String> resultData = natova.createResultListToWriting(dataN);
+        fileExcecutor.loadResultsForAllRespondentsInFile(resultData,"C:/Users/Марта/Downloads/Sofia/resultNatova.txt");
+
+        //counting results for
 
     }
 }

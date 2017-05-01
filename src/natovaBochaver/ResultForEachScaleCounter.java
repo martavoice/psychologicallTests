@@ -10,29 +10,41 @@ import java.util.Map;
 public class ResultForEachScaleCounter {
     public static Map<ScalesOfNatovaBocharevTest, Integer> valuesOfTestScalesForOnePerson = new HashMap<>();
 
-    public String[] createArrayOfAnswersFromStringData(String dataAboutOnePerson) {
-        String[] arrayOfTestDataForOnePerson = dataAboutOnePerson.split(" ");
-        return arrayOfTestDataForOnePerson;
+    public ArrayList<String> createArrayOfAnswersFromStringData(String dataAboutOnePerson) {
+        ArrayList<String> dataOfOnePerson = new ArrayList<>();
+        char[] buffer = dataAboutOnePerson.toCharArray();
+
+        for (int i = 0; i < buffer.length; i++) {
+            if (buffer[i] != '\t') {
+                Character data = buffer[i];
+                dataOfOnePerson.add((data.toString()));
+            }
+        }
+
+        return dataOfOnePerson;
     }
+
     public int countSumFromArray(String dataAboutPerson, int[] numbersOfQuestions, String answer) {
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < numbersOfQuestions.length; i++) {
-            list.add(checkAnswer(dataAboutPerson, numbersOfQuestions[i],answer));
+            list.add(checkAnswer(dataAboutPerson, numbersOfQuestions[i], answer));
         }
         return calculateResultForOneScale(list);
     }
 
     public int countSumFromAllAnswers(int[] positive, int[] negative, String dataAboutPerson) {
         int sum = 0;
-        sum += countSumFromArray(dataAboutPerson, positive, "Так");
-        sum += countSumFromArray(dataAboutPerson, negative, "Ні");
+        sum += countSumFromArray(dataAboutPerson, positive, "+");
+        sum += countSumFromArray(dataAboutPerson, negative, "-");
         return sum;
     }
 
     public int checkAnswer(String dataAboutPerson, int numberOfQuestion, String answer) {
-        String[] answersFromOnPerson = createArrayOfAnswersFromStringData(dataAboutPerson);
+
+        ArrayList<String> answersFromOnPerson = createArrayOfAnswersFromStringData(dataAboutPerson);
+        answersFromOnPerson.add(0, " ");
         int sum = 0;
-        if (answersFromOnPerson[numberOfQuestion].equalsIgnoreCase(answer)) {
+        if (answersFromOnPerson.get(numberOfQuestion).equals(answer)) {
             sum += 1;
         }
         return sum;

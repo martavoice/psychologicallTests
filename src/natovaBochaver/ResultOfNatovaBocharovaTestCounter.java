@@ -9,7 +9,7 @@ import java.util.Map;
  * Created by user on 01.03.2017.
  */
 public class ResultOfNatovaBocharovaTestCounter {
-    ResultForEachScaleCounter resultForEachScaleCounter;
+    ResultForEachScaleCounter resultForEachScaleCounter = new ResultForEachScaleCounter();
 
 
     public String convertResultForOnePersonToString(Map<ScalesOfNatovaBocharevTest, Integer> resultValuesForOnePerson) {
@@ -17,6 +17,7 @@ public class ResultOfNatovaBocharovaTestCounter {
         for (Map.Entry<ScalesOfNatovaBocharevTest, Integer> pair : resultValuesForOnePerson.entrySet()) {
             String resultOfCount = pair.getValue().toString();
             stringBuilder.append(resultOfCount);
+            stringBuilder.append(" ");
         }
         String allResultFromOnePerson = stringBuilder.toString();
         return allResultFromOnePerson;

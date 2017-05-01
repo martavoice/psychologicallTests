@@ -17,24 +17,7 @@ public class ResultOfSigelmanTestCounter {
     private String fileName;
     public ResultForEachScaleCounter resultForEachScaleCounter = new ResultForEachScaleCounter();
 
-    //data from one person from string transform to list and adds to list of all lists respondents
-    public ArrayList<ArrayList> createListOfResultsForOnePerson(ArrayList<String> dataOfAllRespondents) {
-        ArrayList<ArrayList> allData = new ArrayList<>();
-        for (String dataFromOnePerson : dataOfAllRespondents) {
-            ArrayList<String> dataOfOnePerson = new ArrayList<>();
-            char[] buffer = dataFromOnePerson.toCharArray();
 
-            for (int i = 0; i < buffer.length; i++) {
-                if (buffer[i] != '\t') {
-                    Character data = buffer[i];
-                    dataOfOnePerson.add((data.toString()));
-                }
-            }
-
-            allData.add(dataOfOnePerson);
-        }
-        return allData;
-    }
 
     public void fillListsOFData(ArrayList<String> allDataToDivide, ArrayList<String> listOfDataForFirstBlock, ArrayList<String> listOfDataForSecondBlock) {
 
