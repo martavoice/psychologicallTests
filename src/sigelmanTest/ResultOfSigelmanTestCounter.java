@@ -30,7 +30,7 @@ public class ResultOfSigelmanTestCounter {
                     dataOfOnePerson.add((data.toString()));
                 }
             }
-            System.out.println("1" + dataOfOnePerson);
+
             allData.add(dataOfOnePerson);
         }
         return allData;
@@ -45,18 +45,14 @@ public class ResultOfSigelmanTestCounter {
         listOfDataForSecondBlock.add(allDataToDivide.get(0));
 
         //put answers for questions 1-50 of first block to first list and 50 answers to second block
-        for (int i = 1; i < 51; i++) {
+        for (int i = 2; i < 52; i++) {
             listOfDataForFirstBlock.add(allDataToDivide.get(i));
         }
-        for (String s : listOfDataForFirstBlock){
-            System.out.println("2" + s);
-        }
-        for (int i = 51; i < allDataToDivide.size(); i++) {
+
+        for (int i = 52; i < allDataToDivide.size(); i++) {
             listOfDataForSecondBlock.add(allDataToDivide.get(i));
         }
-        for (String s : listOfDataForFirstBlock){
-            System.out.println("3" + s);
-        }
+
     }
 
     //this method create String from results of count scales for 1 block and 1 person
@@ -65,6 +61,7 @@ public class ResultOfSigelmanTestCounter {
         for (Map.Entry<ScaleOfSingelmanTest, Integer> pair : resultValuesForOnePerson.entrySet()) {
             String resultOfCount = pair.getValue().toString();
             stringBuilder.append(resultOfCount);
+            stringBuilder.append(" ");
         }
         String allResultFromOnePerson = stringBuilder.toString();
         return allResultFromOnePerson;
@@ -73,13 +70,9 @@ public class ResultOfSigelmanTestCounter {
     //creating list of String which contains results counting for one block for 1 person
     public ArrayList<String> createListOfResultsForAllRespondentsFromOneBlock(ArrayList<String> listOfDataForBlock) {
         ArrayList<String> listOfResultData = new ArrayList<>();
-        for (String dataAboutOnePerson : listOfDataForBlock) {
-            resultForEachScaleCounter.createArrayOfAnswersFromStringData(dataAboutOnePerson);
-            Map<ScaleOfSingelmanTest, Integer> a = resultForEachScaleCounter.countResultToScaleForOnePerson(dataAboutOnePerson);
-
-            String resultForOnePerson = convertResultForOnePersonToString(a);
-            listOfResultData.add(resultForOnePerson);
-        }
+        Map<ScaleOfSingelmanTest, Integer> a = resultForEachScaleCounter.countResultToScaleForOnePerson(listOfDataForBlock);
+        String resultForOnePerson = convertResultForOnePersonToString(a);
+        listOfResultData.add(resultForOnePerson);
         return listOfResultData;
     }
 

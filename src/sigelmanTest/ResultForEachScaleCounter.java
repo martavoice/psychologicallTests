@@ -10,9 +10,7 @@ import java.util.Map;
 public class ResultForEachScaleCounter {
     private static Map<ScaleOfSingelmanTest, int[]> keysToTest = new HashMap<>();
 
-
     static {
-
         int[] numbersOfQuestionForScaleLove = {1, 6, 11, 16, 21, 26, 31, 36, 41, 46};
         int[] numbersOfQuestionForScaleRequirements = {2, 7, 12, 17, 22, 27, 32, 37, 42, 47};
         int[] numbersOfQuestionForScaleWard = {3, 8, 13, 18, 23, 28, 33, 38, 43, 48};
@@ -38,9 +36,6 @@ public class ResultForEachScaleCounter {
                 dataOfOnePerson.add((data.toString()));
             }
         }
-        for (String s : dataOfOnePerson){
-            System.out.println("4" + s);
-        }
 
         return dataOfOnePerson;
     }
@@ -48,25 +43,28 @@ public class ResultForEachScaleCounter {
     public int countResultForOneScaleForOnePerson(int[] numbersOfQuestion, ArrayList<String> answersFromPerson) {
         int sum = 0;
 
+
         for (int i = 0; i < numbersOfQuestion.length; i++) {
-            switch (Integer.valueOf(answersFromPerson.get(i))) {
+            switch (Integer.valueOf(answersFromPerson.get(numbersOfQuestion[i]))) {
                 case 4:
                     sum += 4;
+                    break;
                 case 3:
                     sum += 3;
+                    break;
                 case 2:
                     sum += 2;
+                    break;
                 case 1:
                     sum += 1;
-                case 0:
-                    sum += 0;
+                    break;
             }
         }
         return sum;
     }
 
-    public Map<ScaleOfSingelmanTest, Integer> countResultToScaleForOnePerson(String dataAboutPerson) {
-        ArrayList<String> answersFromOnPerson = createArrayOfAnswersFromStringData(dataAboutPerson);
+    public Map<ScaleOfSingelmanTest, Integer> countResultToScaleForOnePerson(ArrayList<String> answersFromOnPerson) {
+
         Map<ScaleOfSingelmanTest, Integer> valuesOfTestScalesForOnePerson = new HashMap<>();
 
         for (Map.Entry<ScaleOfSingelmanTest, int[]> pair : keysToTest.entrySet()) {

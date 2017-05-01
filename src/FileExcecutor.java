@@ -24,9 +24,9 @@ public class FileExcecutor {
     public File loadResultsForAllRespondentsInFile(ArrayList<String> resultList) {
         File resultFile = new File("C:/Users/Марта/Downloads/Sofia/result.txt");
 
-         /*
+
         try {
-            //BufferedWriter writer = new BufferedWriter(new FileWriter(resultFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(resultFile));
 
           for (String resultDataForOnePerson : resultList) {
                 writer.write(resultDataForOnePerson);
@@ -36,12 +36,6 @@ public class FileExcecutor {
             System.out.println(e);
         }
         return resultFile;
-        */
-        for (String a : resultList){
-            System.out.println(a);
-        }
-
-         return resultFile;
 
     }
 }
